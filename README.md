@@ -1,23 +1,30 @@
-# Docker openssl-3.0.0
-Docker image used to switch the openssl version in an ubuntu image to openssl 3.0.0: When you need to be at the forefront but dont want to install an alpha version on your regular machine
+# About
+
+Minimal docker image with [OpenSSL 3.0](https://www.openssl.org/blog/blog/2021/09/07/OpenSSL3.Final).
 
 # Why
-When you need a newer version of openssl for i.e running a webserver, this image is a perfect layer to continue layering your openssl dependent webserver upon.
 
-# Installation
+Useful for testing OpenSSL commands when you need to be at the forefront, without having to touch your own system, potentially wreaking havoc in the process. 
+
+Personally I had to run OpenSSL to try out the new CMP client, but I wanted to do so without messing around with the existing (older) OpenSSL on my Ubuntu machine.
+
+Can also be used a a base layer, e.g. when building a container for your webserver or another application depending on OpenSSL.
+
+# Build and Run
+
+Build the container. Compiling OpenSSL is slow, this takes about 10 minutes on my machine, so be prepared with a cup of coffee.
+
 ```
 docker build -t aeakoski/openssl:3.0.0 .
+```
+
+Run the container and open a shell.
+```
 docker run -it aeakoski/openssl:3.0.0
-docker exec openssl verson
-
 ```
 
-# Loose ends
-Somehow I need to run the following commands in the application container that is being layered on top of this openssl image. This image experiences build errors if the commands are run at the end of this build process. But everything works just fine if the following two lines are added to the beginning of the next image layers dockerfile:
-
+Now you can test your new shiny OpenSSL installation:
 ```
-RUN ln -s libssl.so.3 libssl.so
-RUN ldconfig
+> openssl version
+OpenSSL 3.0.0 7 sep 2021 (Library: OpenSSL 3.0.0 7 sep 2021)
 ```
-
-Have not investigated this further.
