@@ -15,12 +15,12 @@ Can also be used a a base layer, e.g. when building a container for your webserv
 Build the container. Compiling OpenSSL is slow, this takes about 10 minutes on my machine, so be prepared with a cup of coffee.
 
 ```
-docker build -t aeakoski/openssl:3.0.0 .
+docker build -t realiserad/openssl:3.0.0 .
 ```
 
 Run the container and open a shell.
 ```
-docker run -it aeakoski/openssl:3.0.0
+docker run -it realiserad/openssl:3.0.0
 ```
 
 Now you can test your new shiny OpenSSL installation:
