@@ -57,4 +57,7 @@ services:
 
 Start the container with ``docker-compose up``.
 
-To access OpenSSL inside the container, open a shell with ``docker exec -it $(docker ps | grep realiserad/openssl | awk '{ print $1 }') /bin/sh``.
+To access OpenSSL inside the container, open a shell using the following command: 
+```
+docker exec -it $(docker ps | grep realiserad/openssl | awk '{ print $1 }') /bin/sh
+```
