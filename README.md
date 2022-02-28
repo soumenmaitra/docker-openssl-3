@@ -32,7 +32,29 @@ OpenSSL 3.0.0 7 sep 2021 (Library: OpenSSL 3.0.0 7 sep 2021)
 Pull From DockerHub
 ===================
 
-You can also pull a pre-built image directly from DockerHub.
+You can also pull a [pre-built image directly from DockerHub](https://hub.docker.com/repository/docker/realiserad/openssl3).
 ```
 docker pull realiserad/openssl3
 ```
+
+Use With Docker Compose
+=======================
+
+To use this container with Docker Compose, use the following ``docker-compose.yml``:
+```
+version: '3'
+networks:
+  router:
+    driver: bridge
+services:
+  openssl:
+    container_name: openssl
+    image: realiserad/openssl3
+    networks:
+      - router
+    stdin_open: true
+```
+
+Start the container with ``docker-compose up``.
+
+To access OpenSSL inside the container, open a shell with ``docker exec -it $(docker ps | grep realiserad/openssl | awk '{ print $1 }') /bin/sh``.
