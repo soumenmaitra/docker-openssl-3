@@ -15,18 +15,18 @@ Can also be used a a base layer, e.g. when building a container for your webserv
 Build the container. Compiling OpenSSL is slow, this takes about 10 minutes on my machine, so be prepared with a cup of coffee.
 
 ```
-docker build -t realiserad/openssl:3.0.0 .
+docker build -t realiserad/openssl:3.0.4 .
 ```
 
 Run the container and open a shell.
 ```
-docker run -it realiserad/openssl:3.0.0
+docker run -it realiserad/openssl:3.0.4
 ```
 
 Now you can test your new shiny OpenSSL installation:
 ```
 > openssl version
-OpenSSL 3.0.0 7 sep 2021 (Library: OpenSSL 3.0.0 7 sep 2021)
+OpenSSL 3.0.4 21 Jun 2022 (Library: OpenSSL 3.0.4 21 Jun 2022)
 ```
 
 Pull From DockerHub
@@ -35,6 +35,7 @@ Pull From DockerHub
 You can also pull a [pre-built image directly from DockerHub](https://hub.docker.com/repository/docker/realiserad/openssl3).
 ```
 docker pull realiserad/openssl3
+docker run -it realiserad/openssl3 /bin/sh
 ```
 
 Use With Docker Compose

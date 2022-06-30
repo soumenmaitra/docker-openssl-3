@@ -3,9 +3,9 @@
 set -e
 cd /var/installation-files/
 
-curl --output openssl-3.0.0.tar.gz https://www.openssl.org/source/openssl-3.0.0.tar.gz
-tar -xf openssl-3.0.0.tar.gz
-cd ./openssl-3.0.0
+curl --output openssl-3.tar.gz https://www.openssl.org/source/openssl-3.0.4.tar.gz
+tar -xf openssl-3.tar.gz
+cd openssl-3.0.4
 
 chmod +x config
 ./config
