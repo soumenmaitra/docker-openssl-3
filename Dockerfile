@@ -1,11 +1,10 @@
-FROM debian:latest
-RUN apt-get update && apt-get install gcc build-essential git wget curl vim -y
+sudo debootstrap focal focal > /dev/null
+sudo tar -C focal -c . | docker import - focal
 
-WORKDIR /apps
+sha256:81ec9a55a92a5618161f68ae691d092bf14d700129093158297b3d01593f4ee3
+docker run focal cat /etc/lsb-release
 
-RUN wget https://www.openssl.org/source/openssl-3.0.0.tar.gz && tar -xzvf openssl-3.0.0.tar.gz
-
-RUN cd openssl-3.0.0 && ./config enable-ssl-trace && make && make install
-ENV LD_LIBRARY_PATH /usr/local/lib/:/usr/local/lib64/
-
-ENTRYPOINT ["openssl"]
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=22.04
+DISTRIB_CODENAME=focal
+DISTRIB_DESCRIPTION="Ubuntu 22.04 LTS"
