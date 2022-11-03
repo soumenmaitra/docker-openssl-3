@@ -6,5 +6,5 @@ docker run focal cat /etc/lsb-release
 
 DISTRIB_ID=Ubuntu
 DISTRIB_RELEASE=22.04
-DISTRIB_CODENAME=focal
+DISTRIB_CODENAME=Jammy Jellyfish
 DISTRIB_DESCRIPTION="Ubuntu 22.04 LTS"
