@@ -1,10 +1,13 @@
-sudo debootstrap focal focal > /dev/null
-sudo tar -C focal -c . | docker import - focal
+FROM alpine
 
-sha256:81ec9a55a92a5618161f68ae691d092bf14d700129093158297b3d01593f4ee3
-docker run focal cat /etc/lsb-release
+RUN mkdir -p /var/installation-files/openssl3
 
-DISTRIB_ID=Ubuntu
-DISTRIB_RELEASE=22.04
-DISTRIB_CODENAME=Jammy Jellyfish
-DISTRIB_DESCRIPTION="Ubuntu 22.04 LTS"
+RUN apk add perl
+RUN apk add curl
+RUN apk add build-base
+RUN apk add linux-headers
+RUN apk add tar
+
+COPY ./start.sh /var/installation-files
+RUN chmod +x /var/installation-files/start.sh
+RUN /var/installation-files/start.sh
